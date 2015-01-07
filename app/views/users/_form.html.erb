@@ -1,0 +1,46 @@
+<div id="page-login" class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+
+    <div class="box">
+      <div class="box-content">
+        <div class="text-center">
+          <h3 class="page-header">New User</h3>
+        </div>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :username, :class=>'control-label' %>
+    <%= f.text_field :username, :class=>'form-control' %>
+  <% end %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :email, :class=>'control-label' %>
+    <%= f.text_field :email, :class=>'form-control' %>
+  <% end %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :password, :class=>'control-label' %>
+    <%= f.text_field :password, :class=>'form-control' %>
+  <% end %>
+  <%= content_tag :div, class: 'form-group' do %>
+    <%= f.label :password_confirmation, :class=>'control-label' %>
+    <%= f.text_field :password_confirmation, :class=>'form-control' %>
+  <% end %>
+  <div class="text-center">
+    <%= f.submit :class=>'btn btn-primary' %>
+  </div>
+<% end %>
+      </div>
+    </div>
+  </div>
+</div>

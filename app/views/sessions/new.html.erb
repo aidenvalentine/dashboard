@@ -1,0 +1,23 @@
+<div id="page-login" class="row">
+  <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+
+    <div class="box">
+      <div class="box-content">
+        <div class="text-center">
+          <h3 class="page-header">Login</h3>
+        </div>
+        
+        <%= form_tag sessions_path do %>
+            <%= content_tag :div, class: 'form-group' do %>
+              <%= label_tag(:email, 'Email', :class=>'control-label') %>
+              <%= text_field(:email, nil, :class=>'form-control') %>
+            <% end %>
+            <%= content_tag :div, class: 'form-group' do %>
+              <%= label_tag(:password, 'Password', :class=>'control-label') %>
+              <%= password_field_tag(:password, nil, :class=>'form-control') %>
+            <% end %>
+            <div class="text-center">
+              <%= submit_tag "Log in", :class=>'btn btn-primary' %>
+            </div>
+        <% end %>
+        <%= link_to "Authenticate with Google!", '/auth/google_oauth2' %>

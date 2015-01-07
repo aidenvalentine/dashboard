@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="http://localhost:3000/css/style.css" rel="stylesheet">
+  <link href="http://localhost:3000/plugins/bootstrap/bootstrap.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+  <script src="http://localhost:3000/plugins/jquery/jquery-2.1.0.min.js"></script>
+  <script src="http://localhost:3000/plugins/bootstrap/bootstrap.js"></script>
+</head>
+<body>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-info alert-dismissible", :role => "alert" do %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= content_tag :strong, msg %>
+    <% end %>
+<% end %>
+
+<%= yield %>
+
+</div>
+
+</body>
+</html>

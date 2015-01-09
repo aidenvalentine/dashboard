@@ -54,6 +54,7 @@ class TestController < ApplicationController
         @snippet = JSON.parse(result.body)["snippet"]
         @subject = JSON.parse(result.body)["payload"]["headers"][8]["value"]
         @from = JSON.parse(result.body)["payload"]["headers"][12]["value"]
-        @date = JSON.parse(result.body)["payload"]["headers"][14]["value"]
+        d = Date.parse JSON.parse(result.body)["payload"]["headers"][14]["value"]
+        @date = d.strftime('%m/%d/%y') 
   end
 end

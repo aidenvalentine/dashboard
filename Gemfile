@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -50,3 +50,6 @@ gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-google-oauth2'
 
 gem 'base64url', '~> 1.0.1'
+
+# Jquery UI
+gem 'jquery-ui-rails', '~> 5.0.3'

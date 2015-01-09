@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   helper_method :current_user
-#  layout "admin"
-  layout :determine_layout
+  layout "admin2"
+#  layout :determine_layout
   
   private
 

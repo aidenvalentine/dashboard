@@ -17,7 +17,7 @@ class TestController < ApplicationController
     @h = { :names => [], :values => [] }
     @string = JSON.parse(response.body)["results"]["stats"].take(21).each do |string|
       @h[:names] << string['name']
-      @h[:values] << string['value']
+      @h[:values] << string['value']['text']
     end
     @c = @h[:names].zip(@h[:values])
 
@@ -48,8 +48,12 @@ class TestController < ApplicationController
       service = client.discovered_api('gmail')
       result = client.execute(
         :api_method => service.users.messages.get,
-        :parameters => {'userId' => 'me', 'id' => params[:id], 'format' => 'raw'},
+        :parameters => {'userId' => 'me', 'id' => params[:id], 'format' => 'full'},
         :headers => {'Content-Type' => 'application/json'})
-        render :text => Base64URL.decode(JSON.parse(result.body)["raw"])
+#        render :text => Base64URL.decode(JSON.parse(result.body)["raw"])
+        @snippet = JSON.parse(result.body)["snippet"]
+        @subject = JSON.parse(result.body)["payload"]["headers"][8]["value"]
+        @from = JSON.parse(result.body)["payload"]["headers"][12]["value"]
+        @date = JSON.parse(result.body)["payload"]["headers"][14]["value"]
   end
 end
